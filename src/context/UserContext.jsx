@@ -32,3 +32,4 @@ const UserProvider = ({ children }) => {
     }
 
 
+export {useUser, UserProvider}

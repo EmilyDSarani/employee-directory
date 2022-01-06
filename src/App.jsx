@@ -21,7 +21,7 @@ export default function App() {
         <Auth />
       </Route>
       <Route path="/signup">
-        <Auth />
+        <Auth signingUp />
       </Route>  
       <Route exact path="/detail">
         <CreateProfile />
