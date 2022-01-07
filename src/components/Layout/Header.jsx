@@ -1,10 +1,20 @@
 import { useUser } from "../../context/UserContext";
-import { Link } from "react-router-dom"
+import { Link, useHistory } from "react-router-dom"
+import { signOutUser } from "../../services/user";
 
 //on click returns a redirect
 
 export default function Header() {
-    // const { user } = useUser();
+    const { user, setUser } = useUser();
+    const history = useHistory();
+
+    const handleLogOut = () => {
+        signOutUser();
+        setUser(null)
+        history.push('/login');
+    };
+
+
     return (
         <>
          <header>
@@ -12,7 +22,7 @@ export default function Header() {
             ACME Inc. Employee Directory
         </h2>
         <p>
-        {user.email ? `Signed in as ${user.email}` : 'Not Signed In'}
+        {user?.email ? `Signed in as ${user.email}` : 'Not Signed In'}
           <Link to="/login"><button>Sign in</button></Link>
         </p>
          </header> 
