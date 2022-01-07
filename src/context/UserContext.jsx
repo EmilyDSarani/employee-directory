@@ -1,5 +1,8 @@
 import { useContext, createContext, useState } from 'react'
 
+//We will use this to set the user in context and have it be across the entire app.
+//it is a big bucket of state that is shared across the entire app
+
 //Create Context
 const UserContext = createContext();
 
