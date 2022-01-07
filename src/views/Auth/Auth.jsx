@@ -5,6 +5,7 @@ import { useUser } from '../../context/UserContext';
 import UserForm from '../../components/UserForm';
 import { signInUser, signUpUser } from '../../services/user'
 
+
 //when the user signs up, we want to assume it is false at first. Then we can turn it to true to trigger different changes
 //we know we will need the history and location from react router,
 //might need useState
@@ -16,7 +17,7 @@ import { signInUser, signUpUser } from '../../services/user'
 export default function Auth({signingUp = false }) {
     const history = useHistory();
     const location = useLocation();
-    const   setUser  = useUser();
+    const {setUser}  = useUser();
     // const { formState, handleFormChange } = authForm({email:'', password:''});
     const { from } = location.state || {from:{pathname: '/'}}
     const [error, setError] = useState(null);
