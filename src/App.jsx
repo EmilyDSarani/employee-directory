@@ -32,15 +32,16 @@ export default function App() {
       <Route path="/confirm">
         <Confirmation />
       </Route>
-      <PrivateRoute exact path="/detail">
+      {/* put as private after done editing- all the detail pages */}
+      <Route exact path="/detail">
         <CreateProfile />
-      </PrivateRoute>
-      <PrivateRoute path="/detail/:id">
+      </Route>
+      <Route path="/detail/:id">
         <ProfileDetail />
-      </PrivateRoute>
-      <PrivateRoute path="/detail/:id/edit">
+      </Route>
+      <Route path="/detail/edit/:id">
         <EditProfile />
-      </PrivateRoute>
+      </Route>
     </Switch>
     </main>
   </Router>
