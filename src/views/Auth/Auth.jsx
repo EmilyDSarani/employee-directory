@@ -72,9 +72,11 @@ export default function Auth({signingUp = false }) {
     return (
     <section>
         <h3>{signingUp ? 'Sign Up' : 'Login'} </h3>
-        <UserForm authSubmit={handleSubmit}
+        <UserForm 
+        authSubmit={handleSubmit}
         label={signingUp ? 'Sign Up' : 'Login'}
         />
+        
         {signingUp ? (
             <p>Have an account?!
                 <Link to="/login">Login</Link>

@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import { authForm } from '../../hooks/authForm';
+import { authForm } from '../hooks/authForm';
 
 //will need to use the formState and handleform change that has been used
 //do I need to pass in error?
 export default function UserForm({
     label= 'Auth',
-    authSubmit 
+    authSubmit, 
 }) {
    
     const { formState, handleFormChange  } = authForm({email:'', password:''});
