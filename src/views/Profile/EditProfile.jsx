@@ -1,29 +1,36 @@
 import { useState, useEffect } from 'react'
 import { useHistory } from 'react-router'
 import { getProfile, updateProfile } from '../../services/profiles'
+import { useUser } from '../../context/UserContext'
 
-export default function EditProfile({ match }) {
+export default function EditProfile() {
+    const { user } = useUser()
     const [name, setName] = useState('')
     const [bio, setBio] = useState('')
     const [birthday, setBirthday] = useState('')
-    const { email } = match.params
+
+    //Another way to think about it, but keep in mind that info could get outdated
+    // const userInfo = {name, email: user.email, bio, birthday}
+    
     const history = useHistory();
 
     useEffect(()=> {
-        getProfile(email)
-        .then((response)=>{
-            setName(response.name)
-            setBio(response.bio)
-            setBirthday(response.birthday)
+        getProfile()
+        .then((profile)=>{
+            setName(profile.name)
+            setBio(profile.bio)
+            setBirthday(profile.birthday)
         })
-    }, [email]);
+    }, []);
 
-    const handleUpdate = async() => {
-    const update = confirm(`would you like to update ${name}?`);
-    if(update){
-        updateProfile(email, {name, bio, birthday})
-
-        history.push(`/detail/${email}`)
+    const handleUpdate = async(e) => {
+        e.preventDefault();
+    const confirm = window.confirm(`would you like to update ${name}?`);
+    if(confirm){
+        console.log(user.email)
+        const update = await updateProfile({name, email: user.email, bio, birthday})
+        console.log(update)
+        history.push(`/detail/email`)
     }
 
     };
@@ -39,7 +46,15 @@ export default function EditProfile({ match }) {
             name='name'
             type='text'
             value={name}
-            onChange={({ target }) => setName(target.value)} />
+            onChange={(e) => setName(e.target.value)} />
+
+            <label htmlFor="email">Employee Email</label>
+            <input
+            name='email'
+            type='text'
+            value={user.email}
+            disabled
+           />
 
 
             <label htmlFor="bio">Employee Bio</label>

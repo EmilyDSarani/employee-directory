@@ -36,10 +36,10 @@ export default function App() {
       <Route exact path="/detail">
         <CreateProfile />
       </Route>
-      <Route path="/detail/:id">
+      <Route path="/detail/email">
         <ProfileDetail />
       </Route>
-      <Route path="/detail/edit/:id">
+      <Route path="/detail/edit/email">
         <EditProfile />
       </Route>
     </Switch>

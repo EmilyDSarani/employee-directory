@@ -1,11 +1,14 @@
 import {useState, useEffect} from 'react'
 import { useHistory } from 'react-router'
+import { UserProvider } from '../../context/UserContext'
 import { createProfile } from '../../services/profiles'
+import { useUser } from '../../context/UserContext'
 
 export default function CreateProfile() {
     //from the createProfile function, it takes in a name, email, bio, and birthday. So that is the state that we would want to set and grab later.
-    const [name, setName] = useState('')
-    const [email, setEmail] = useState('')
+    const { user }= useUser();
+    const [name, setName] = useState(user.email)
+    // const [email, setEmail] = useState('')
     const [bio, setBio] = useState('')
     const [birthday, setBirthday] = useState('')
     const history = useHistory();
@@ -13,8 +16,8 @@ export default function CreateProfile() {
     const handleSubmit = async (e) =>{
         e.preventDefault();
 
-        const response = await createProfile({name, email, bio, birthday});
-        history.push(`/detail/${response.id}`)
+        await createProfile({name, email, bio, birthday});
+        history.push('/detail/email')
     }
 
     return (
@@ -35,8 +38,9 @@ export default function CreateProfile() {
           
             name='email'
             type='text'
-            value={email}
-            onChange={({ target }) => setEmail(target.value)} />
+            value={user.email}
+            disabled
+           />
 
             <label htmlFor="bio">Employee Bio</label>
             <input
@@ -54,7 +58,7 @@ export default function CreateProfile() {
             value={birthday}
             onChange={({ target }) => setBirthday(target.value)} />
 
-            <input type="submit" value="Add Profile"/>
+            <button type="button" onClick={handleSubmit}>Add</button>
             </form>
         </fieldset>  
         </>

@@ -7,7 +7,7 @@ export default function Header() {
     // const { user } = useUser();
     return (
         <>
-        {/* <header>
+         <header>
         <h2>
             ACME Inc. Employee Directory
         </h2>
@@ -15,7 +15,7 @@ export default function Header() {
         {user.email ? `Signed in as ${user.email}` : 'Not Signed In'}
           <Link to="/login"><button>Sign in</button></Link>
         </p>
-         </header> */}
+         </header> 
         </>
     )
 }

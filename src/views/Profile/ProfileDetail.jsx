@@ -7,23 +7,23 @@ import { getProfile } from '../../services/profiles'
 //might need an edit button
 
 export default function ProfileDetail() {
-    const [user, setUser] = useState(null)
+    const [profile, setProfile] = useState({})
     const [loading, setLoading] = useState(null)
 
     useEffect(() => {
         getProfile()
-        .then((response) => setUser(response))
+        .then((response) => setProfile(response))
         .finally(()=> setLoading(false))
-    },[]);
+    }, []);
     if(loading) return <h2>What made the JavaScript developer so sad? He did not Node how to Express himself.</h2>
 
     return (
         <>
-        <h2>{user.name}</h2>
-        <h3>{user.email}</h3>
-        <h4>{user.birthday}</h4>
-        <p>{user}</p>
-        <Link to={`/detail/edit/${user}`} ><button>Edit Info</button></Link>
+        <h2>{profile.name}</h2>
+        <h3>{profile.email}</h3>
+        <h4>{profile.birthday}</h4>
+        <p>{profile.bio}</p>
+        <Link to={'/detail/edit/email'} ><button>Edit Info</button></Link>
         </>
     )
 }

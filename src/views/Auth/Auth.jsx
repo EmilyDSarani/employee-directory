@@ -35,10 +35,10 @@ export default function Auth({signingUp = false }) {
             } else {
                 const user = await signInUser(email, password)
                 setUser(user);
-                history.replace('/detail')
+                history.replace('/detail/email')
             }
-            !signingUp ? await signInUser({id, email}) : await signUpUser({email, password})
-            history.replace(from)
+            // !signingUp ? await signInUser({id, email}) : await signUpUser({email, password})
+            // history.replace(from)
         } catch(error) {
             throw error 
         }
