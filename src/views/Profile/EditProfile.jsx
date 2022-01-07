@@ -56,7 +56,6 @@ export default function EditProfile() {
             disabled
            />
 
-
             <label htmlFor="bio">Employee Bio</label>
             <input
            
