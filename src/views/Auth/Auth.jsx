@@ -1,6 +1,6 @@
 import React from 'react'
 import { useHistory, useLocation } from 'react-router';
-import { authForm } from '../../hooks/authForm';
+// 
 import { useUser } from '../../context/UserContext';
 import UserForm from '../../components/UserForm';
 import { signInUser, signUpUser } from '../../services/user'
@@ -17,7 +17,7 @@ export default function Auth({signingUp = false }) {
     const history = useHistory();
     const location = useLocation();
     const { setUser } = useUser();
-    const { formState, handleFormChange } = authForm({email:'', password:''});
+    // const { formState, handleFormChange } = authForm({email:'', password:''});
     const { from } = location.state || {from:{pathname: '/'}}
     const [error, setError] = useState(null);
 
@@ -76,7 +76,7 @@ export default function Auth({signingUp = false }) {
         authSubmit={handleSubmit}
         label={signingUp ? 'Sign Up' : 'Login'}
         />
-        
+
         {signingUp ? (
             <p>Have an account?!
                 <Link to="/login">Login</Link>
