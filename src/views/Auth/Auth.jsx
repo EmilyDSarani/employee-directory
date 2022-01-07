@@ -30,8 +30,16 @@ export default function Auth({signingUp = false }) {
             if(signingUp){
                 const user = await signUpUser(email, password);
                 setUser(user);
-                history.replace('/')
+                history.replace('/confirm');
+            } else {
+                const user = await signInUser(email, password)
+                setUser(user);
+                history.replace('/detail')
             }
+            !signingUp ? await signInUser({id, email}) : await signUpUser({email, password})
+            history.replace(from)
+        } catch(error) {
+            throw error 
         }
 
 
@@ -63,7 +71,20 @@ export default function Auth({signingUp = false }) {
 
     return (
     <section>
-        <UserForm />
+        <h3>{signingUp ? 'Sign Up' : 'Login'} </h3>
+        <UserForm authSubmit={handleSubmit}
+        label={signingUp ? 'Sign Up' : 'Login'}
+        />
+        {signingUp ? (
+            <p>Have an account?!
+                <Link to="/login">Login</Link>
+            </p>
+        ) : (
+            <p>Don't have an account!?
+                <Link to="/signup">Sign Up</Link>
+            </p>
+        )}
+
     </section>
     )
 }

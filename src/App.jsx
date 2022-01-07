@@ -1,11 +1,13 @@
 import Home from "./views/Home/Home";
 import Auth from "./views/Auth/Auth";
+import Confirmation from "./views/Auth/Confirmation";
 import CreateProfile from './views/Profile/CreateProfile';
 import ProfileDetail from './views/Profile/ProfileDetail';
 import EditProfile from './views/Profile/EditProfile';
 import { UserProvider } from "./context/UserContext";
 import Header from './components/Layout/Header'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Confirmation from "./views/Auth/Confirmation";
 
 export default function App() {
   return(
@@ -26,6 +28,9 @@ export default function App() {
       <Route path="/signup">
         <Auth signingUp />
       </Route>  
+      <Route path="/confirm">
+        <Confirmation />
+      </Route>
       <Route exact path="/detail">
         <CreateProfile />
       </Route>
