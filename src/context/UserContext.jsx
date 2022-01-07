@@ -32,6 +32,7 @@ const UserProvider = ({ children }) => {
         if(context === undefined){
             throw new Error('useUser needs to be defined in UserContext Provider')
         }
+        
     }
 
 

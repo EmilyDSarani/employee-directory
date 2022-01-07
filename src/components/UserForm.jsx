@@ -5,7 +5,7 @@ import { authForm } from '../hooks/authForm';
 //do I need to pass in error?
 export default function UserForm({
     label= 'Auth',
-    authSubmit, 
+    onSubmit, 
 }) {
    
     const { formState, handleFormChange  } = authForm({email:'', password:''});
@@ -22,7 +22,7 @@ export default function UserForm({
                 'Yo, you need a password that is AT LEAST 8+ characters long.'
             );
             setLoading(true);
-            await onsubmit(email, password);
+            await onSubmit(email, password);
         } catch (error) {
             setLoading(false);
             setError(error.message);
@@ -39,7 +39,7 @@ export default function UserForm({
     <>
         <fieldset>
             <legend>{label}</legend>
-                <form authSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit}>
                     <label htmlFor="email">Email </label>
                         <input
                         id="email"

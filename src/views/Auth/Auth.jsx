@@ -1,6 +1,6 @@
-import React from 'react'
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { useHistory, useLocation } from 'react-router';
-// 
 import { useUser } from '../../context/UserContext';
 import UserForm from '../../components/UserForm';
 import { signInUser, signUpUser } from '../../services/user'
@@ -16,7 +16,7 @@ import { signInUser, signUpUser } from '../../services/user'
 export default function Auth({signingUp = false }) {
     const history = useHistory();
     const location = useLocation();
-    const { setUser } = useUser();
+    const   setUser  = useUser();
     // const { formState, handleFormChange } = authForm({email:'', password:''});
     const { from } = location.state || {from:{pathname: '/'}}
     const [error, setError] = useState(null);
@@ -73,7 +73,7 @@ export default function Auth({signingUp = false }) {
     <section>
         <h3>{signingUp ? 'Sign Up' : 'Login'} </h3>
         <UserForm 
-        authSubmit={handleSubmit}
+        onSubmit={handleSubmit}
         label={signingUp ? 'Sign Up' : 'Login'}
         />
 
