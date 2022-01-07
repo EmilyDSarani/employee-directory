@@ -19,8 +19,6 @@ export default function Auth({signingUp = false }) {
     const location = useLocation();
     const {setUser}  = useUser();
     // const { formState, handleFormChange } = authForm({email:'', password:''});
-    const { from } = location.state || {from:{pathname: '/'}}
-    const [error, setError] = useState(null);
 
     //will need to put in a handle login
     //the handle login will need to pass in the form logic and then have a turnery of whether or not the login was sucessful and if not then there nees to be an error
