@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should display header when signed out 1`] = `
+<div>
+  <header>
+    <h2>
+      ACME Inc. Employee Directory
+    </h2>
+    <p>
+      Not logged in
+      <div>
+        <a
+          href="/login"
+        >
+          <button>
+            Sign in
+          </button>
+        </a>
+      </div>
+    </p>
+  </header>
+</div>
+`;
+
+exports[`should display user email when signed in 1`] = `
+<div>
+  <header>
+    <h2>
+      ACME Inc. Employee Directory
+    </h2>
+    <p>
+      Logged in as example@jest.com
+      <div>
+        <button>
+          LogOut
+        </button>
+      </div>
+    </p>
+  </header>
+</div>
+`;

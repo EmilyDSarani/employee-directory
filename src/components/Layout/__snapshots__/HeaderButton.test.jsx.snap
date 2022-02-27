@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should display login button 1`] = `
+<div>
+  <div>
+    <a
+      href="/login"
+    >
+      <button>
+        Sign in
+      </button>
+    </a>
+  </div>
+</div>
+`;
